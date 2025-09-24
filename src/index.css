@@ -2,57 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Indian-inspired DBT Education Design System - Vibrant, Accessible, and Story-driven */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Core Brand Colors - Inspired by Indian flag and positive emotions */
+    --saffron: 23 100% 55%;
+    --saffron-light: 23 100% 70%;
+    --saffron-dark: 23 90% 45%;
+    
+    --white: 0 0% 100%;
+    --green: 142 76% 36%;
+    --green-light: 142 76% 50%;
+    --green-dark: 142 86% 25%;
+    
+    --chakra-blue: 210 100% 40%;
+    --chakra-navy: 210 100% 25%;
+    
+    /* Warm Indian Earth Tones */
+    --terracotta: 14 85% 55%;
+    --terracotta-light: 14 85% 75%;
+    --golden-yellow: 45 100% 65%;
+    --warm-orange: 30 95% 60%;
+    
+    /* Trust and Safety Colors */
+    --success-green: 142 71% 45%;
+    --warning-orange: 25 95% 53%;
+    --error-red: 0 84% 55%;
+    
+    /* Neutral Grays for Accessibility */
+    --text-primary: 225 9% 9%;
+    --text-secondary: 220 9% 46%;
+    --text-muted: 220 13% 69%;
+    --surface-light: 210 17% 96%;
+    --surface-medium: 210 16% 90%;
+    --border-light: 220 13% 91%;
+    
+    /* Design System Semantic Tokens */
+    --background: var(--white);
+    --foreground: var(--text-primary);
+    
+    --primary: var(--saffron);
+    --primary-foreground: var(--white);
+    --primary-hover: var(--saffron-dark);
+    
+    --secondary: var(--green);
+    --secondary-foreground: var(--white);
+    --secondary-hover: var(--green-dark);
+    
+    --accent: var(--chakra-blue);
+    --accent-foreground: var(--white);
+    --accent-hover: var(--chakra-navy);
+    
+    --muted: var(--surface-light);
+    --muted-foreground: var(--text-secondary);
+    
+    --card: var(--white);
+    --card-foreground: var(--text-primary);
+    
+    --border: var(--border-light);
+    --input: var(--border-light);
+    --ring: var(--saffron);
+    
+    --destructive: var(--error-red);
+    --destructive-foreground: var(--white);
+    
+    --success: var(--success-green);
+    --success-foreground: var(--white);
+    
+    --warning: var(--warning-orange);
+    --warning-foreground: var(--white);
+    
+    /* Beautiful Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--saffron)) 0%, hsl(var(--warm-orange)) 50%, hsl(var(--golden-yellow)) 100%);
+    --gradient-story: linear-gradient(180deg, hsl(var(--chakra-blue)) 0%, hsl(var(--green)) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(var(--green)) 0%, hsl(var(--green-light)) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(var(--white)) 0%, hsl(var(--surface-light)) 100%);
+    
+    /* Shadows for Depth */
+    --shadow-soft: 0 2px 8px hsl(var(--saffron) / 0.1);
+    --shadow-medium: 0 4px 16px hsl(var(--saffron) / 0.15);
+    --shadow-strong: 0 8px 32px hsl(var(--saffron) / 0.2);
+    --shadow-glow: 0 0 24px hsl(var(--saffron) / 0.3);
+    
+    /* Typography Scale */
+    --font-display: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Animations */
+    --transition-fast: all 0.15s ease;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --radius: 1rem;
+    --radius-large: 1.5rem;
+    --radius-small: 0.5rem;
   }
 
   .dark {
@@ -101,5 +145,219 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* Story Animation Classes */
+  .animate-story-float {
+    animation: story-float 3s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+
+  /* Gradient Backgrounds */
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-story {
+    background: var(--gradient-story);
+  }
+
+  .bg-gradient-success {
+    background: var(--gradient-success);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  /* Beautiful Shadows */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Interactive Elements */
+  .interactive-card {
+    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1 cursor-pointer;
+  }
+
+  .story-section {
+    @apply min-h-screen flex items-center justify-center relative overflow-hidden;
+  }
+
+  /* Audio Button */
+  .audio-button {
+    @apply inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors duration-200 ml-2 cursor-pointer;
+  }
+
+  /* Quiz Styles */
+  .quiz-option {
+    @apply w-full p-4 text-left rounded-lg border-2 border-transparent bg-card hover:border-primary/30 transition-all duration-200;
+  }
+
+  .quiz-option.selected {
+    @apply border-primary bg-primary/5;
+  }
+
+  .quiz-option.correct {
+    @apply border-success bg-success/10;
+  }
+
+  .quiz-option.incorrect {
+    @apply border-destructive bg-destructive/10;
+  }
+
+  /* Chatbot Styles */
+  .chatbot-message {
+    @apply max-w-xs p-3 rounded-lg mb-2;
+  }
+
+  .chatbot-message.user {
+    @apply bg-primary text-primary-foreground ml-auto;
+  }
+
+  .chatbot-message.bot {
+    @apply bg-card shadow-soft mr-auto;
+  }
+
+  /* Progress Indicators */
+  .progress-ring {
+    @apply relative w-16 h-16;
+  }
+
+  .progress-ring circle {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+  }
+
+  .progress-ring .progress-background {
+    stroke: hsl(var(--muted));
+  }
+
+  .progress-ring .progress-bar {
+    stroke: hsl(var(--primary));
+    transform-origin: center;
+    transform: rotate(-90deg);
+    transition: stroke-dashoffset 0.5s ease;
+  }
+}
+
+@layer utilities {
+  /* Folk Art Patterns */
+  .folk-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, hsl(var(--saffron) / 0.05) 0%, transparent 20%),
+      radial-gradient(circle at 80% 80%, hsl(var(--green) / 0.05) 0%, transparent 20%);
+    pointer-events: none;
+  }
+
+  /* Text Utilities */
+  .text-gradient-primary {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animation utilities */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
+
+/* Keyframes */
+@keyframes story-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .story-section {
+    min-height: 80vh;
+  }
+  
+  .text-responsive {
+    font-size: clamp(1rem, 4vw, 1.25rem);
   }
 }
