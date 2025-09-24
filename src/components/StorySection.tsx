@@ -1,7 +1,10 @@
 import { AlertTriangle, ArrowRight, CheckCircle, Coins, CreditCard, Users } from "lucide-react";
 import { AudioButton } from "./AudioButton";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const StorySection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="story" className="bg-background">
       {/* Problem Section */}
@@ -11,13 +14,9 @@ export const StorySection = () => {
             <div className="space-y-4">
               <AlertTriangle className="w-16 h-16 text-warning mx-auto animate-bounce-gentle" />
               <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-                पहले क्या होता था?
-                <AudioButton text="पहले क्या होता था?" />
+                {t('story.problem.title')}
+                <AudioButton text={t('story.problem.title')} />
               </h2>
-              <h3 className="text-2xl md:text-3xl font-display text-muted-foreground">
-                What Happened Before?
-                <AudioButton text="What Happened Before?" />
-              </h3>
             </div>
 
             {/* Animation showing money flowing through middlemen */}
@@ -27,8 +26,8 @@ export const StorySection = () => {
                   <div className="text-3xl">🏛️</div>
                 </div>
                 <p className="text-center font-medium">
-                  सरकार / Government
-                  <AudioButton text="सरकार" />
+                  {t('story.government')}
+                  <AudioButton text={t('story.government')} />
                 </p>
               </div>
 
@@ -38,8 +37,8 @@ export const StorySection = () => {
                   <Users className="w-10 h-10 text-white" />
                 </div>
                 <p className="text-center font-medium text-warning">
-                  बिचौलिए / Middlemen
-                  <AudioButton text="बिचौलिए" />
+                  {t('story.middlemen')}
+                  <AudioButton text={t('story.middlemen')} />
                 </p>
               </div>
 
@@ -49,8 +48,8 @@ export const StorySection = () => {
                   <Coins className="w-10 h-10 text-white" />
                 </div>
                 <p className="text-center font-medium text-destructive">
-                  कम पैसा / Less Money
-                  <AudioButton text="कम पैसा" />
+                  {t('story.less_money')}
+                  <AudioButton text={t('story.less_money')} />
                 </p>
               </div>
 
@@ -60,20 +59,16 @@ export const StorySection = () => {
                   <div className="text-3xl">👨‍🎓</div>
                 </div>
                 <p className="text-center font-medium">
-                  छात्र / Student
-                  <AudioButton text="छात्र" />
+                  {t('story.student')}
+                  <AudioButton text={t('story.student')} />
                 </p>
               </div>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-medium max-w-4xl mx-auto">
               <p className="text-xl md:text-2xl text-center leading-relaxed text-muted-foreground">
-                पहले छात्रवृत्ति का पैसा बीच में कई लोगों से होकर आता था। कभी-कभी पूरा पैसा नहीं मिलता था।
-                <AudioButton text="पहले छात्रवृत्ति का पैसा बीच में कई लोगों से होकर आता था। कभी-कभी पूरा पैसा नहीं मिलता था।" />
-              </p>
-              <p className="text-lg md:text-xl text-center mt-4 text-muted-foreground">
-                Earlier, scholarship money passed through many people. Sometimes students didn't get the full amount.
-                <AudioButton text="Earlier, scholarship money passed through many people. Sometimes students didn't get the full amount." />
+                {t('story.problem.description')}
+                <AudioButton text={t('story.problem.description')} />
               </p>
             </div>
           </div>
@@ -87,13 +82,9 @@ export const StorySection = () => {
             <div className="space-y-4">
               <CheckCircle className="w-16 h-16 text-white mx-auto animate-bounce-gentle" />
               <h2 className="text-4xl md:text-5xl font-display font-bold text-white">
-                अब DBT से क्या होता है?
-                <AudioButton text="अब DBT से क्या होता है?" />
+                {t('story.solution.title')}
+                <AudioButton text={t('story.solution.title')} />
               </h2>
-              <h3 className="text-2xl md:text-3xl font-display text-white/90">
-                What Happens Now with DBT?
-                <AudioButton text="What Happens Now with DBT?" />
-              </h3>
             </div>
 
             {/* Animation showing direct transfer */}
@@ -103,8 +94,8 @@ export const StorySection = () => {
                   <div className="text-4xl">🏛️</div>
                 </div>
                 <p className="text-center font-medium text-white text-xl">
-                  सरकार / Government
-                  <AudioButton text="सरकार" />
+                  {t('story.government')}
+                  <AudioButton text={t('story.government')} />
                 </p>
               </div>
 
@@ -112,8 +103,8 @@ export const StorySection = () => {
                 <ArrowRight className="w-12 h-12 text-white animate-pulse" />
                 <div className="text-white text-center">
                   <p className="text-lg font-semibold">
-                    सीधे / Direct
-                    <AudioButton text="सीधे" />
+                    {t('story.direct')}
+                    <AudioButton text={t('story.direct')} />
                   </p>
                   <p className="text-sm opacity-90">No Middlemen!</p>
                 </div>
@@ -125,20 +116,16 @@ export const StorySection = () => {
                   <CreditCard className="w-12 h-12 text-success" />
                 </div>
                 <p className="text-center font-medium text-white text-xl">
-                  आपका बैंक खाता / Your Bank Account
-                  <AudioButton text="आपका बैंक खाता" />
+                  {t('story.bank_account')}
+                  <AudioButton text={t('story.bank_account')} />
                 </p>
               </div>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-strong max-w-4xl mx-auto border border-white/20">
               <p className="text-xl md:text-2xl text-center leading-relaxed text-white">
-                अब DBT से पैसा सीधे आपके बैंक खाते में आता है। पूरा पैसा, सही समय पर!
-                <AudioButton text="अब DBT से पैसा सीधे आपके बैंक खाते में आता है। पूरा पैसा, सही समय पर!" />
-              </p>
-              <p className="text-lg md:text-xl text-center mt-4 text-white/90">
-                Now with DBT, money comes directly to your bank account. Full amount, on time!
-                <AudioButton text="Now with DBT, money comes directly to your bank account. Full amount, on time!" />
+                {t('story.solution.description')}
+                <AudioButton text={t('story.solution.description')} />
               </p>
             </div>
           </div>

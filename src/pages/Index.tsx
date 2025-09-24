@@ -1,3 +1,4 @@
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { StorySection } from "@/components/StorySection";
@@ -9,31 +10,33 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <Navigation />
-      
-      {/* Hero Section */}
-      <HeroSection />
-      
-      {/* Story Section */}
-      <StorySection />
-      
-      {/* Status Checker */}
-      <StatusChecker />
-      
-      {/* Quiz Section */}
-      <QuizSection />
-      
-      {/* Public Awareness */}
-      <PublicAwarenessSection />
-      
-      {/* Floating Chatbot */}
-      <ChatbotSection />
-      
-      {/* Footer */}
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-background">
+        {/* Navigation */}
+        <Navigation />
+        
+        {/* Hero Section */}
+        <HeroSection />
+        
+        {/* Story Section */}
+        <StorySection />
+        
+        {/* Status Checker */}
+        <StatusChecker />
+        
+        {/* Quiz Section */}
+        <QuizSection />
+        
+        {/* Public Awareness */}
+        <PublicAwarenessSection />
+        
+        {/* Floating Chatbot */}
+        <ChatbotSection />
+        
+        {/* Footer */}
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 };
 

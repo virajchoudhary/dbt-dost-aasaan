@@ -1,10 +1,13 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AudioButton } from "./AudioButton";
+import { useLanguage } from "@/contexts/LanguageContext";
 import priyaImage from "@/assets/priya-character.jpg";
 import heroBackground from "@/assets/hero-background.jpg";
 
 export const HeroSection = () => {
+  const { t } = useLanguage();
+
   const scrollToStory = () => {
     document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -24,23 +27,14 @@ export const HeroSection = () => {
           <div className="text-center lg:text-left space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-display font-bold text-white leading-tight">
-                अपना छात्रवृत्ति पैसा सीधे पाएं!
-                <AudioButton text="अपना छात्रवृत्ति पैसा सीधे पाएं" />
+                {t('hero.title')}
+                <AudioButton text={t('hero.title')} />
               </h1>
-              <h2 className="text-2xl md:text-3xl font-display font-semibold text-white/90">
-                Get Your Scholarship Money Directly!
-                <AudioButton text="Get Your Scholarship Money Directly!" />
-              </h2>
             </div>
             
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
-              Priya और लाखों छात्रों की तरह, आप भी DBT से अपना पैसा सुरक्षित पा सकते हैं।
-              <AudioButton text="Priya और लाखों छात्रों की तरह, आप भी DBT से अपना पैसा सुरक्षित पा सकते हैं।" />
-            </p>
-            
-            <p className="text-lg md:text-xl text-white/80">
-              Like Priya and millions of students, you can also receive your money safely through DBT.
-              <AudioButton text="Like Priya and millions of students, you can also receive your money safely through DBT." />
+              {t('hero.subtitle')}
+              <AudioButton text={t('hero.subtitle')} />
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -51,7 +45,7 @@ export const HeroSection = () => {
                 className="text-lg px-8 py-4 shadow-medium hover:shadow-strong transition-all duration-300"
               >
                 <Play className="w-5 h-5 mr-2" />
-                कहानी शुरू करें / Start Story
+                {t('hero.cta.story')}
               </Button>
               
               <Button 
@@ -60,7 +54,7 @@ export const HeroSection = () => {
                 onClick={() => document.getElementById('checker')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-lg px-8 py-4 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
               >
-                अभी जांचें / Check Now
+                {t('hero.cta.check')}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>
@@ -72,7 +66,7 @@ export const HeroSection = () => {
               <div className="animate-story-float">
                 <img
                   src={priyaImage}
-                  alt="Priya - छात्रा जो DBT के बारे में सीख रही है"
+                  alt="Priya - Student learning about DBT"
                   className="w-80 h-80 object-cover rounded-full shadow-glow border-8 border-white/30"
                 />
               </div>

@@ -1,25 +1,21 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Globe } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface LanguageSwitcherProps {
   className?: string;
 }
 
 export const LanguageSwitcher = ({ className = "" }: LanguageSwitcherProps) => {
-  const [currentLang, setCurrentLang] = useState<'hi' | 'en'>('hi');
+  const { language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
-    const newLang = currentLang === 'hi' ? 'en' : 'hi';
-    setCurrentLang(newLang);
+    const newLang = language === 'hi' ? 'en' : 'hi';
+    setLanguage(newLang);
     
-    // In a real implementation, this would update the entire app's language
-    // For now, we'll just show a visual feedback
+    // Update document language
     document.documentElement.lang = newLang;
-    
-    // You could dispatch a language change event here
-    const event = new CustomEvent('languageChange', { detail: { language: newLang } });
-    window.dispatchEvent(event);
   };
 
   return (
@@ -28,11 +24,11 @@ export const LanguageSwitcher = ({ className = "" }: LanguageSwitcherProps) => {
       size="sm"
       onClick={toggleLanguage}
       className={`flex items-center space-x-2 ${className}`}
-      title={currentLang === 'hi' ? 'Switch to English' : 'हिंदी में बदलें'}
+      title={language === 'hi' ? 'Switch to English' : 'हिंदी में बदलें'}
     >
       <Globe className="w-4 h-4" />
       <span className="font-semibold">
-        {currentLang === 'hi' ? 'EN' : 'हिं'}
+        {language === 'hi' ? 'EN' : 'हिं'}
       </span>
     </Button>
   );

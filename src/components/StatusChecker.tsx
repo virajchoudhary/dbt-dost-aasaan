@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AudioButton } from "./AudioButton";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { CheckCircle, XCircle, Loader2, ArrowRight, ExternalLink } from "lucide-react";
 
 export const StatusChecker = () => {
+  const { t } = useLanguage();
   const [aadhaarNumber, setAadhaarNumber] = useState("");
   const [isChecking, setIsChecking] = useState(false);
   const [checkResult, setCheckResult] = useState<'success' | 'failure' | null>(null);
@@ -26,7 +28,7 @@ export const StatusChecker = () => {
     const cleanNumber = aadhaarNumber.replace(/\s/g, '');
     
     if (cleanNumber.length !== 12) {
-      alert('कृपया 12 अंकों का आधार नंबर डालें / Please enter a 12-digit Aadhaar number');
+      alert(t('checker.step1.note'));
       return;
     }
 
@@ -58,12 +60,12 @@ export const StatusChecker = () => {
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-            2-Step DBT Journey
-            <AudioButton text="2-Step DBT Journey" />
+            {t('checker.title')}
+            <AudioButton text={t('checker.title')} />
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            केवल 2 कदमों में अपना DBT स्टेटस चेक करें और scholarship पोर्टल तक पहुंचें
-            <AudioButton text="केवल 2 कदमों में अपना DBT स्टेटस चेक करें और scholarship पोर्टल तक पहुंचें" />
+            {t('checker.subtitle')}
+            <AudioButton text={t('checker.subtitle')} />
           </p>
         </div>
 
@@ -75,31 +77,27 @@ export const StatusChecker = () => {
                 <span className="text-2xl font-bold text-primary-foreground">1</span>
               </div>
               <CardTitle className="text-2xl">
-                अपना बैंक तैयार है?
-                <AudioButton text="अपना बैंक तैयार है?" />
+                {t('checker.step1.title')}
+                <AudioButton text={t('checker.step1.title')} />
               </CardTitle>
-              <CardDescription>
-                Check if Your Bank is Ready
-                <AudioButton text="Check if Your Bank is Ready" />
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-4">
                 <label className="text-sm font-medium">
-                  आधार नंबर डालें / Enter Aadhaar Number:
-                  <AudioButton text="आधार नंबर डालें" />
+                  {t('checker.step1.subtitle')}:
+                  <AudioButton text={t('checker.step1.subtitle')} />
                 </label>
                 <Input
                   type="text"
-                  placeholder="1234 5678 9012"
+                  placeholder={t('checker.step1.placeholder')}
                   value={aadhaarNumber}
                   onChange={handleInputChange}
                   className="text-lg p-4"
                   maxLength={14}
                 />
                 <p className="text-sm text-muted-foreground">
-                  यह एक सिमुलेशन है - वास्तविक DBT चेक नहीं है
-                  <AudioButton text="यह एक सिमुलेशन है - वास्तविक DBT चेक नहीं है" />
+                  {t('checker.step1.note')}
+                  <AudioButton text={t('checker.step1.note')} />
                 </p>
               </div>
 
@@ -112,10 +110,10 @@ export const StatusChecker = () => {
                 {isChecking ? (
                   <>
                     <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                    जांच रहे हैं... / Checking...
+                    {t('checker.step1.checking')}
                   </>
                 ) : (
-                  'चेक करें / Check Now'
+                  t('checker.step1.button')
                 )}
               </Button>
 
@@ -126,22 +124,16 @@ export const StatusChecker = () => {
                     <div className="bg-success/10 border border-success/20 rounded-lg p-4 text-center">
                       <CheckCircle className="w-8 h-8 text-success mx-auto mb-2" />
                       <p className="font-semibold text-success">
-                        बधाई हो! आपका बैंक DBT के लिए तैयार है!
-                        <AudioButton text="बधाई हो! आपका बैंक DBT के लिए तैयार है!" />
-                      </p>
-                      <p className="text-sm text-success/80 mt-1">
-                        Congratulations! Your bank is ready for DBT!
+                        {t('checker.step1.success')}
+                        <AudioButton text={t('checker.step1.success')} />
                       </p>
                     </div>
                   ) : (
                     <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4 text-center">
                       <XCircle className="w-8 h-8 text-destructive mx-auto mb-2" />
                       <p className="font-semibold text-destructive">
-                        आपको अपने बैंक में आधार लिंक करना होगा
-                        <AudioButton text="आपको अपने बैंक में आधार लिंक करना होगा" />
-                      </p>
-                      <p className="text-sm text-destructive/80 mt-1">
-                        You need to link Aadhaar to your bank account
+                        {t('checker.step1.failure')}
+                        <AudioButton text={t('checker.step1.failure')} />
                       </p>
                     </div>
                   )}
@@ -157,23 +149,16 @@ export const StatusChecker = () => {
                 <span className={`text-2xl font-bold ${step2Unlocked ? 'text-secondary-foreground' : 'text-muted-foreground'}`}>2</span>
               </div>
               <CardTitle className="text-2xl">
-                स्कॉलरशिप पोर्टल पर जाएं
-                <AudioButton text="स्कॉलरशिप पोर्टल पर जाएं" />
+                {t('checker.step2.title')}
+                <AudioButton text={t('checker.step2.title')} />
               </CardTitle>
-              <CardDescription>
-                Visit the Scholarship Portal
-                <AudioButton text="Visit the Scholarship Portal" />
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {!step2Unlocked ? (
                 <div className="text-center py-8">
                   <p className="text-muted-foreground">
-                    पहले Step 1 पूरा करें
-                    <AudioButton text="पहले Step 1 पूरा करें" />
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Complete Step 1 first
+                    {t('checker.step2.locked')}
+                    <AudioButton text={t('checker.step2.locked')} />
                   </p>
                 </div>
               ) : (
@@ -181,11 +166,8 @@ export const StatusChecker = () => {
                   <div className="bg-secondary/10 rounded-lg p-6 text-center">
                     <div className="text-4xl mb-4">🎓</div>
                     <p className="font-semibold text-lg">
-                      राष्ट्रीय छात्रवृत्ति पोर्टल
-                      <AudioButton text="राष्ट्रीय छात्रवृत्ति पोर्टल" />
-                    </p>
-                    <p className="text-muted-foreground mt-1">
-                      National Scholarship Portal (NSP)
+                      {t('checker.step2.portal')}
+                      <AudioButton text={t('checker.step2.portal')} />
                     </p>
                   </div>
 
@@ -195,14 +177,14 @@ export const StatusChecker = () => {
                     size="lg"
                     variant="secondary"
                   >
-                    पोर्टल पर जाएं / Visit Portal
+                    {t('checker.step2.button')}
                     <ExternalLink className="w-5 h-5 ml-2" />
                   </Button>
 
                   <div className="bg-card rounded-lg p-4 border">
                     <p className="text-sm text-center text-muted-foreground">
-                      scholarships.gov.in पर जाकर अपनी scholarship के लिए apply करें
-                      <AudioButton text="scholarships.gov.in पर जाकर अपनी scholarship के लिए apply करें" />
+                      {t('checker.step2.note')}
+                      <AudioButton text={t('checker.step2.note')} />
                     </p>
                   </div>
                 </div>

@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Menu, X } from "lucide-react";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navItems = [
-    { href: "#story", label: "कहानी / Story" },
-    { href: "#checker", label: "चेक करें / Check" },
-    { href: "#quiz", label: "क्विज़ / Quiz" },
-    { href: "#awareness", label: "जागरूकता / Awareness" }
+    { href: "#story", key: "nav.story" },
+    { href: "#checker", key: "nav.check" },
+    { href: "#quiz", key: "nav.quiz" },
+    { href: "#awareness", key: "nav.awareness" }
   ];
 
   const scrollToSection = (href: string) => {
@@ -43,7 +45,7 @@ export const Navigation = () => {
                 onClick={() => scrollToSection(item.href)}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium"
               >
-                {item.label}
+                {t(item.key)}
               </button>
             ))}
             <LanguageSwitcher />
@@ -72,7 +74,7 @@ export const Navigation = () => {
                   onClick={() => scrollToSection(item.href)}
                   className="text-left text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium py-2"
                 >
-                  {item.label}
+                  {t(item.key)}
                 </button>
               ))}
             </div>
