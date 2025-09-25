@@ -6,7 +6,7 @@ import { useLanguage, useQuizData } from "@/contexts/LanguageContext";
 import { CheckCircle, XCircle, RotateCcw, Trophy, Brain } from "lucide-react";
 import raviImage from "@/assets/ravi-character.jpg";
 
-export const QuizSection = () => {
+export const QuizSection1 = () => {
   const { t } = useLanguage();
   const quizData = useQuizData();
   const [currentQuestion, setCurrentQuestion] = useState(0);
