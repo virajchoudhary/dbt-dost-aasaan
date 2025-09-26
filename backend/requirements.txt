@@ -1,6 +1,9 @@
-google-generativeai==0.3.2
-fastapi==0.104.1
-uvicorn==0.24.0
-sentence-transformers==2.2.2
-faiss-cpu==1.7.4
-python-dotenv==1.0.0
+google-generativeai
+sentence-transformers
+faiss-cpu
+python-dotenv
+fastapi
+uvicorn[standard]
+requests
+pandas
+python-multipart

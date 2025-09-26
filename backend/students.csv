@@ -1,0 +1,5 @@
+student_id,aadhaar_last4,ifsc_code,dbt_status,seeding_status
+101,1234,SBIN0001234,Active,Completed
+102,5678,HDFC0005678,Pending,Completed
+103,9012,ICIC0009012,Active,Pending
+104,3456,BARB0003456,Inactive,Not Done
